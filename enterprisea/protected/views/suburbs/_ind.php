@@ -1,0 +1,5 @@
+<div id="subject-<?php echo $data->id;?>" class="btn-group mr5 ind-subject">
+    <button class="btn btn-default" type="button"><?php echo $data->name;?></button>   
+    <a data-modal-label="Edit Suburb `<?php echo $data->cityname;?> - <?php echo $data->name;?>`" data-toggle="modal" data-target="#myModal" data-ajax-url="<?php echo Yii::app()->createUrl('suburbs/ajaxupdate', array('id'=>$data->id,'country'=>$_GET['country']));?>" class="btn btn-default dropdown-toggle open_popup" href="javascript:void(0);"><span class="fa fa-pencil"></span></a>
+    <a class="btn btn-default dropdown-toggle remove-button" data-target="#cpsubjects-<?php echo $data->city_id;?>" href="<?php echo Yii::app()->createUrl('suburbs/delete', array('id'=>$data->id, 'ajax'=>'remove-sub','country'=>$_GET['country']));?>"> <span class="fa fa-trash-o"></span></a>
+</div>
