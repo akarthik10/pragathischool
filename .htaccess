@@ -1,7 +1,7 @@
 Options +FollowSymLinks
 IndexIgnore */*
 RewriteEngine on
-RewriteBase /filename
+RewriteBase /pragathischool
 
 #Admin
 Rewriterule ^admin$ index.php?r=Cms/admin/home

@@ -4038,3 +4038,209 @@ Stack trace:
 #12 C:\wamp\www\filename\core\base\CApplication.php(158): CWebApplication->processRequest()
 #13 C:\wamp\www\filename\index.php(51): CApplication->run()
 #14 {main} REQUEST_URI=/filename/index.php?r=report/default/assessmentsendsms
+2015/02/14 17:25:46 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2015/02/14 17:39:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "mailbox/contactgroups/update".' in C:\wamp\www\pragathischool\core\web\CWebApplication.php:281
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('mailbox/contact...')
+#1 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#2 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#3 {main} REQUEST_URI=/pragathischool/index.php?r=mailbox/contactgroups/update&id=1
+2015/02/14 17:44:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'You are not authorized to view this page.' in C:\wamp\www\pragathischool\protected\modules\rights\views\layouts\main.php:31
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\web\CBaseController.php(119): require()
+#1 C:\wamp\www\pragathischool\core\web\CBaseController.php(88): CBaseController->renderInternal('C:\wamp\www\pra...', Array, true)
+#2 C:\wamp\www\pragathischool\core\web\CController.php(781): CBaseController->renderFile('C:\wamp\www\pra...', Array, true)
+#3 C:\wamp\www\pragathischool\protected\modules\rights\controllers\AssignmentController.php(132): CController->render('user', Array)
+#4 C:\wamp\www\pragathischool\core\web\actions\CInlineAction.php(50): AssignmentController->actionUser()
+#5 C:\wamp\www\pragathischool\core\web\CController.php(300): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\pragathischool\core\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\www\pragathischool\core\web\CController.php(1144): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\pragathischool\core\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\www\pragathischool\core\web\CController.php(283): CFilterChain->run()
+#12 C:\wamp\www\pragathischool\core\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\www\pragathischool\core\web\CWebApplication.php(277): CController->run('user')
+#14 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('rights/assignme...')
+#15 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#16 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#17 {main} REQUEST_URI=/pragathischool/index.php?r=rights/assignment/user&id=7
+2015/02/14 17:44:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'You are not authorized to view this page.' in C:\wamp\www\pragathischool\protected\modules\rights\views\layouts\main.php:31
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\web\CBaseController.php(119): require()
+#1 C:\wamp\www\pragathischool\core\web\CBaseController.php(88): CBaseController->renderInternal('C:\wamp\www\pra...', Array, true)
+#2 C:\wamp\www\pragathischool\core\web\CController.php(781): CBaseController->renderFile('C:\wamp\www\pra...', Array, true)
+#3 C:\wamp\www\pragathischool\protected\modules\rights\controllers\AssignmentController.php(132): CController->render('user', Array)
+#4 C:\wamp\www\pragathischool\core\web\actions\CInlineAction.php(50): AssignmentController->actionUser()
+#5 C:\wamp\www\pragathischool\core\web\CController.php(300): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\pragathischool\core\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\www\pragathischool\core\web\CController.php(1144): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\pragathischool\core\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\www\pragathischool\core\web\CController.php(283): CFilterChain->run()
+#12 C:\wamp\www\pragathischool\core\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\www\pragathischool\core\web\CWebApplication.php(277): CController->run('user')
+#14 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('rights/assignme...')
+#15 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#16 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#17 {main} REQUEST_URI=/pragathischool/index.php?r=rights/assignment/user&id=7
+2015/02/16 15:07:09 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2015/02/16 15:07:21 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2015/02/16 15:07:23 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'activity_feed' already exists. The SQL statement executed was: 
+
+
+
+
+
+
+
+--
+-- Database: `os_stable`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activity_feed`
+--
+
+CREATE TABLE `activity_feed` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `initiator_id` int(11) NOT NULL,
+  `activity_type` int(11) NOT NULL,
+  `goal_id` int(11) DEFAULT NULL,
+  `goal_name` varchar(120) DEFAULT NULL,
+  `field_name` varchar(120) DEFAULT NULL,
+  `initial_field_value` varchar(120) DEFAULT NULL,
+  `new_field_value` varchar(120) DEFAULT NULL,
+  `activity_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1.
+2015/02/16 15:07:23 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'activity_feed' already exists. The SQL statement executed was: 
+
+
+
+
+
+
+
+--
+-- Database: `os_stable`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activity_feed`
+--
+
+CREATE TABLE `activity_feed` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `initiator_id` int(11) NOT NULL,
+  `activity_type` int(11) NOT NULL,
+  `goal_id` int(11) DEFAULT NULL,
+  `goal_name` varchar(120) DEFAULT NULL,
+  `field_name` varchar(120) DEFAULT NULL,
+  `initial_field_value` varchar(120) DEFAULT NULL,
+  `new_field_value` varchar(120) DEFAULT NULL,
+  `activity_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1' in C:\wamp\www\pragathischool\core\db\CDbCommand.php:336
+Stack trace:
+#0 C:\wamp\www\pragathischool\protected\modules\Install\controllers\DefaultController.php(279): CDbCommand->execute()
+#1 C:\wamp\www\pragathischool\core\web\actions\CInlineAction.php(50): DefaultController->actionStep3()
+#2 C:\wamp\www\pragathischool\core\web\CController.php(300): CInlineAction->runWithParams(Array)
+#3 C:\wamp\www\pragathischool\core\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#4 C:\wamp\www\pragathischool\core\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\wamp\www\pragathischool\core\web\CWebApplication.php(277): CController->run('step3')
+#6 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('Install/default...')
+#7 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#8 C:\wamp\www\pragathischool\install.php(40): CApplication->run()
+#9 {main} REQUEST_URI=/pragathischool/install.php?r=Install/default/step3
+2015/02/16 15:07:35 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2015/02/16 15:07:41 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2015/02/16 15:12:08 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2015/02/16 15:31:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "sms/sendbatch".' in C:\wamp\www\pragathischool\core\web\CWebApplication.php:281
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('sms/sendbatch')
+#1 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#2 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#3 {main} REQUEST_URI=/pragathischool/index.php?r=sms/sendbatch
+2015/02/16 15:34:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "sms/sendbatch".' in C:\wamp\www\pragathischool\core\web\CWebApplication.php:281
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('sms/sendbatch')
+#1 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#2 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#3 {main} REQUEST_URI=/pragathischool/index.php?r=sms/sendbatch
+2015/02/16 15:38:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "sms/sendbatch".' in C:\wamp\www\pragathischool\core\web\CWebApplication.php:281
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('sms/sendbatch')
+#1 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#2 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#3 {main} REQUEST_URI=/pragathischool/index.php?r=sms/sendbatch
+2015/02/16 15:58:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "batch".' in C:\wamp\www\pragathischool\core\web\CController.php:477
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\web\CController.php(262): CController->missingAction('batch')
+#1 C:\wamp\www\pragathischool\core\web\CWebApplication.php(277): CController->run('batch')
+#2 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('sms/default/bat...')
+#3 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#4 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#5 {main} REQUEST_URI=/pragathischool/index.php?r=sms/default/batch
+2015/02/16 15:58:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "sms/batch".' in C:\wamp\www\pragathischool\core\web\CWebApplication.php:281
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('sms/batch')
+#1 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#2 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#3 {main} REQUEST_URI=/pragathischool/index.php?r=sms/batch
+2015/02/16 15:58:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "sms/batch".' in C:\wamp\www\pragathischool\core\web\CWebApplication.php:281
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('sms/batch')
+#1 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#2 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#3 {main} REQUEST_URI=/pragathischool/index.php?r=sms/batch
+2015/02/16 15:58:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "sms/batch".' in C:\wamp\www\pragathischool\core\web\CWebApplication.php:281
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('sms/batch')
+#1 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#2 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#3 {main} REQUEST_URI=/pragathischool/index.php?r=sms/batch
+2015/02/17 14:05:36 [error] [exception.CException] exception 'CException' with message 'Property "Students.name" is not defined.' in C:\wamp\www\pragathischool\core\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\db\ar\CActiveRecord.php(129): CComponent->__get('name')
+#1 C:\wamp\www\pragathischool\core\web\helpers\CHtml.php(1711): CActiveRecord->__get('name')
+#2 C:\wamp\www\pragathischool\core\web\helpers\CHtml.php(1674): CHtml::value(Object(Students), 'name')
+#3 C:\wamp\www\pragathischool\protected\modules\sms\controllers\SendBatchController.php(130): CHtml::listData(Array, 'id', 'name')
+#4 C:\wamp\www\pragathischool\core\web\actions\CInlineAction.php(50): SendBatchController->actionBatch()
+#5 C:\wamp\www\pragathischool\core\web\CController.php(300): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\pragathischool\core\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\www\pragathischool\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\pragathischool\core\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#10 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\www\pragathischool\core\web\CController.php(283): CFilterChain->run()
+#12 C:\wamp\www\pragathischool\core\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\www\pragathischool\core\web\CWebApplication.php(277): CController->run('batch')
+#14 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('sms/sendbatch/b...')
+#15 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#16 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#17 {main} REQUEST_URI=/pragathischool/index.php?r=sms/sendbatch/batch
+2015/02/17 14:22:19 [error] [exception.CException] exception 'CException' with message 'SmsSettings and its behaviors do not have a method or closure named "sendSmsAll".' in C:\wamp\www\pragathischool\core\base\CComponent.php:269
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\db\ar\CActiveRecord.php(214): CComponent->__call('sendSmsAll', Array)
+#1 C:\wamp\www\pragathischool\protected\modules\sms\controllers\SendBatchController.php(153): CActiveRecord->__call('sendSmsAll', Array)
+#2 C:\wamp\www\pragathischool\protected\modules\sms\controllers\SendBatchController.php(153): SmsSettings->sendSmsAll('9449725427,7760...', 0, 'Hi Test SMS')
+#3 C:\wamp\www\pragathischool\core\web\actions\CInlineAction.php(50): SendBatchController->actionIndex()
+#4 C:\wamp\www\pragathischool\core\web\CController.php(300): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\pragathischool\core\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\pragathischool\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\pragathischool\core\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#9 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\pragathischool\core\web\CController.php(283): CFilterChain->run()
+#11 C:\wamp\www\pragathischool\core\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\pragathischool\core\web\CWebApplication.php(277): CController->run('')
+#13 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('sms/sendbatch')
+#14 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#15 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#16 {main} REQUEST_URI=/pragathischool/index.php?r=sms/sendbatch

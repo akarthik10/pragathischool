@@ -56,7 +56,8 @@ class Guardians extends CActiveRecord
 		return array(
 			array('ward_id, country_id,office_phone1, office_phone2, mobile_phone,income,uid', 'numerical', 'integerOnly'=>true),
 			array('first_name, last_name, relation, email, office_phone1, office_phone2, mobile_phone, office_address_line1, office_address_line2, city, state, occupation, income, education', 'length', 'max'=>255),
-			array('first_name, last_name, email', 'required'),
+			//array('first_name, last_name, email', 'required'),
+			array('first_name', 'required'),
 			array('email','check'),
 			array('email', 'email'),
 			array('dob, created_at, updated_at', 'safe'),

@@ -42,6 +42,10 @@ foreach($roles as $role)
 			
 			array('label'=>t('Send SMS').'<span>'.t('send an sms').'</span>', 'url'=>array('/sms/send'),
 			'active'=> ((Yii::app()->controller->module->id=='sms' and Yii::app()->controller->id=='send' and Yii::app()->controller->action->id=='index') ? true : false),'linkOptions'=>array('class'=>'sent_sms')),
+
+			array('label'=>t('Send SMS Batch').'<span>'.t('send an sms to a batch').'</span>', 'url'=>array('/sms/sendbatch'),
+			'active'=> ((Yii::app()->controller->module->id=='sms' and Yii::app()->controller->id=='sendbatch' and Yii::app()->controller->action->id=='index') ? true : false),'linkOptions'=>array('class'=>'batch_sms')),
+
 			array('label'=>t('Templates').'<span>'.t('All SMS templates').'</span>', 'url'=>array('/sms/templates'),
 			'active'=> ((Yii::app()->controller->module->id=='sms' and Yii::app()->controller->id=='templates') ? true : false),'linkOptions'=>array('class'=>'evntlist_ico')),
 			

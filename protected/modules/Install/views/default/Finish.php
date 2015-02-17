@@ -22,7 +22,7 @@
         <?php if ($htaccessUpdated === false):?>
         <strong style="color: red">openschool uses SEO friendly URLs, you need to upload this file as <?php echo CHtml::link('.htaccess', array('default/htaccess'));?> to <?php echo Yii::getPathOfAlias('webroot');?> folder.</strong><br/>
         <?php endif;?>
-        <a target="_blank" href="<?php echo Yii::app()->Request->getBaseUrl(true); ?>">Go to Site <img src="<?php echo Yii::app()->theme->baseUrl ?>/images/ext-link.png" /></a>
+        <a target="_blank" href="<?php echo Yii::app()->Request->getBaseUrl(true); ?>/index.php?r=students">Go to Site <img src="<?php echo Yii::app()->theme->baseUrl ?>/images/ext-link.png" /></a>
 	</div>
     </fieldset>
     </div>
