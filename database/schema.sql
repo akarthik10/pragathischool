@@ -1418,6 +1418,7 @@ CREATE TABLE `finance_fees` (
   `student_id` int(11) DEFAULT NULL,
   `fees_paid` int(50) NOT NULL DEFAULT '0',
   `is_paid` tinyint(1) DEFAULT '0',
+  `date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_finance_fees_on_fee_collection_id_and_student_id` (`fee_collection_id`,`student_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

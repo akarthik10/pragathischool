@@ -215,6 +215,7 @@ $(".navigationbtm_wrapper_outer").show();
                  <?php
 				 
 				 if(isset(Yii::app()->controller->module->id)) {
+				 	/*
 					 if(Yii::app()->controller->module->id=='mailbox'||Yii::app()->controller->module->id=='dashboard' ||Yii::app()->controller->module->id=='cal' || Yii::app()->controller->id=='activityFeed')
 					 {
 					 	echo CHtml::link(Yii::t('app','Home'), array('/mailbox'),array('class'=>'ic1 active'));
@@ -222,18 +223,18 @@ $(".navigationbtm_wrapper_outer").show();
 					 else
 					 {
 						 echo CHtml::link(Yii::t('app','Home'), array('/mailbox'),array('class'=>'ic1'));
-					 }
+					 }*/
 				 }
 				 else
 				 {
-					 if(Yii::app()->controller->id=='activityFeed')
-					 {
-					 	echo CHtml::link(Yii::t('app','Home'), array('/mailbox'),array('class'=>'ic1 active'));
-					 }
-					 else
-					 {
-						 echo CHtml::link(Yii::t('app','Home'), array('/mailbox'),array('class'=>'ic1'));
-					 }
+					 // if(Yii::app()->controller->id=='activityFeed')
+					 // {
+					 // 	echo CHtml::link(Yii::t('app','Home'), array('/mailbox'),array('class'=>'ic1 active'));
+					 // }
+					 // else
+					 // {
+						//  echo CHtml::link(Yii::t('app','Home'), array('/mailbox'),array('class'=>'ic1'));
+					 // }
 				 }
 				 ?>
                 </li>
@@ -381,7 +382,19 @@ $(".navigationbtm_wrapper_outer").show();
 					echo CHtml::link(Yii::t('app','Website'), array('#'),array('class'=>'ic4 '));
 				}
 				?>
-                </li><?php */?>
+                </li><?php */
+
+                if(isset(Yii::app()->controller->module->id) and Yii::app()->controller->module->id=='sms')
+				 {
+					 echo '<li class="active">';
+				 	echo CHtml::link(Yii::t('app','SMS'), array('/sms'),array('class'=>'ic23'));
+					echo '</li>';
+				 }else{
+					 echo '<li>';
+					 echo CHtml::link(Yii::t('app','SMS'), array('/sms'),array('class'=>'ic23'));
+					 echo '</li>';
+				 }
+				 ?>
             </ul>
             
         </div>	
@@ -394,158 +407,10 @@ $(".navigationbtm_wrapper_outer").show();
         ),array('id'=>'showJobDialog','class'=>'saveic')); ?><?php */?>
         
          <div id="jobDialog"></div>
-      <div class="nav_drop_but"></div>
+      <!-- <div class="nav_drop_but"></div> -->
      </div> 
     
-     <div class="navigationbtm_wrapper_outer">
-      <div class="navigation_wrapper">
-      	<div class="nav">
-        	<ul id="sortable2" class="connectedSortable">
-            	
-                <li>
-                 <?php 
-				if(isset(Yii::app()->controller->module->id) and Yii::app()->controller->module->id=='hostel')
-				{
-				    echo CHtml::link(Yii::t('app','Hostel'), array('/hostel'),array('class'=>'ic15 active'));
-				}
-				else
-				{
-					echo CHtml::link(Yii::t('app','Hostel'), array('/hostel'),array('class'=>'ic15'));
-				}
-				?>
-                </li>
-                  <li>
-                 <?php 
-				if(isset(Yii::app()->controller->module->id) and Yii::app()->controller->module->id=='transport')
-				{
-				    echo CHtml::link(Yii::t('app','Transport'), array('/transport'),array('class'=>'ic17 active'));
-				}
-				else
-				{
-					echo CHtml::link(Yii::t('app','Transport'), array('/transport'),array('class'=>'ic17'));
-				}
-				?>
-                </li>
-                <li>
-				<?php 
-				
-					
-				 if(isset(Yii::app()->controller->module->id) and Yii::app()->controller->module->id=='library')
-				 {
-				 echo CHtml::link(Yii::t('app','Library'), array('/library'),array('class'=>'ic10 active'));
-				 }else{
-					 echo CHtml::link(Yii::t('app','Library'), array('/library'),array('class'=>'ic10'));
-				 }
-				
-				?>
-               </li>
-               
-               <li>
-				<?php 
-				
-					
-				 if(isset(Yii::app()->controller->module->id) and Yii::app()->controller->module->id=='downloads')
-				 {
-				 echo CHtml::link(Yii::t('app','Downloads'), array('/downloads'),array('class'=>'ic18 active'));
-				 }else{
-					 echo CHtml::link(Yii::t('app','Downloads'), array('/downloads'),array('class'=>'ic18'));
-				 }
-				
-				?>
-               </li>
-                <li>
-				<?php 
-				
-					
-				 if(isset(Yii::app()->controller->module->id) and Yii::app()->controller->module->id=='importcsv')
-				 {
-				 echo CHtml::link(Yii::t('app','Import'), array('/importcsv'),array('class'=>'ic19 active'));
-				 }else{
-					 echo CHtml::link(Yii::t('app','Import'), array('/importcsv'),array('class'=>'ic19'));
-				 }
-				
-				?>
-               </li>
-               
-               <li>
-				<?php 
-				
-					
-				 if(isset(Yii::app()->controller->module->id) and Yii::app()->controller->module->id=='export')
-				 {
-				 echo CHtml::link(Yii::t('app','Export'), array('/export'),array('class'=>'ic21 active'));
-				 }else{
-					 echo CHtml::link(Yii::t('app','Export'), array('/export'),array('class'=>'ic21'));
-				 }
-				
-				?>
-               </li>
-               
-               <?php 
-				
-					
-				 if(isset(Yii::app()->controller->module->id) and Yii::app()->controller->module->id=='sms')
-				 {
-					 echo '<li class="active">';
-				 	echo CHtml::link(Yii::t('app','SMS'), array('/sms'),array('class'=>'ic23'));
-					echo '</li>';
-				 }else{
-					 echo '<li>';
-					 echo CHtml::link(Yii::t('app','SMS'), array('/sms'),array('class'=>'ic23'));
-					 echo '</li>';
-				 }
-				
-				?>
-               
-              
-    
-                 <?php /*?><li>
-                 <?php 
-				if(Yii::app()->controller->module->id=='translate')
-				{
-				    echo CHtml::link(Yii::t('app','Translate'), array('/translate/edit/missing'),array('class'=>'ic14 active'));
-				}
-				else
-				{
-					echo CHtml::link(Yii::t('app','Translate'), array('/translate/edit/missing'),array('class'=>'ic14'));
-				}
-				?>
-                </li><?php */?>
-               <?php /*?> <li>
-                 <?php 
-				if(Yii::app()->controller->module->id=='user')
-				{
-				    echo CHtml::link(Yii::t('app','User'), array('/user/admin'),array('class'=>'ic14 active'));
-				}
-				else
-				{
-					echo CHtml::link(Yii::t('app','User'), array('/user/admin'),array('class'=>'ic14'));
-				}
-				?>
-                </li><?php */?>
-                <?php /*?><li>
-                 <?php 
-				if(Yii::app()->controller->module->id=='rights')
-				{
-				    echo CHtml::link(Yii::t('app','Rights'), array('/rights'),array('class'=>'ic14 active'));
-				}
-				else
-				{
-					echo CHtml::link(Yii::t('app','Rights'), array('/rights'),array('class'=>'ic14'));
-				}
-				?>
-                </li><?php */?>
-                
-                
-                
-           <?php /*?><li><a href="/osinstall/index.php?r=reports" class="ic16 ">LMS</a></li><?php */?>
-                
-            </ul>
-            
-        </div>	
-      </div>
-      
-     </div>
+   
       <!--<div class="midnav">
       <ul>
       <li>

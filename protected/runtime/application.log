@@ -4244,3 +4244,13 @@ Stack trace:
 #14 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
 #15 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
 #16 {main} REQUEST_URI=/pragathischool/index.php?r=sms/sendbatch
+2015/02/17 14:35:46 [error] [exception.CException] exception 'CException' with message 'Alias "transport.TransportModule" is invalid. Make sure it points to an existing PHP file.' in C:\wamp\www\pragathischool\core\YiiBase.php:321
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\YiiBase.php(201): YiiBase::import('transport.Trans...', true)
+#1 C:\wamp\www\pragathischool\core\base\CModule.php(266): YiiBase::createComponent('transport.Trans...', 'transport', NULL, Array)
+#2 C:\wamp\www\pragathischool\core\web\CWebApplication.php(332): CModule->getModule('transport')
+#3 C:\wamp\www\pragathischool\core\web\CWebApplication.php(271): CWebApplication->createController('transport')
+#4 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('transport')
+#5 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#6 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#7 {main} REQUEST_URI=/pragathischool/index.php?r=transport

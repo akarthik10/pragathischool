@@ -9,6 +9,7 @@
  * @property string $transaction_id
  * @property integer $student_id
  * @property integer $is_paid
+ * @property date $date
  */
 class FinanceFees extends CActiveRecord
 {
@@ -41,7 +42,7 @@ class FinanceFees extends CActiveRecord
 			array('transaction_id', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, fee_collection_id, transaction_id, student_id, fees_paid, is_paid', 'safe', 'on'=>'search'),
+			array('id, fee_collection_id, transaction_id, student_id, fees_paid, is_paid, date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,6 +69,7 @@ class FinanceFees extends CActiveRecord
 			'student_id' => Yii::t('fees','Student'),
 			'fees_paid' => Yii::t('fees','Fees Paid'),
 			'is_paid' => 'Is Paid',
+			'date' => Yii::t('fees','Date'),
 		);
 	}
 
@@ -87,6 +89,7 @@ class FinanceFees extends CActiveRecord
 		$criteria->compare('transaction_id',$this->transaction_id,true);
 		$criteria->compare('student_id',$this->student_id);
 		$criteria->compare('is_paid',$this->is_paid);
+		$criteria->compare('date', $this->date);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

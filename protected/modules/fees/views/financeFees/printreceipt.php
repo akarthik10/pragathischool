@@ -39,6 +39,7 @@
 	//$particulars = FinanceFeeParticulars::model()->findAll("finance_fee_category_id=:x", array(':x'=>$collection->fee_category_id));	
 	$batch=Batches::model()->findByAttributes(array('id'=>$_REQUEST['batch']));
 	$currency=Configurations::model()->findByPk(5);
+
 ?>
 
 <table width="700" border="1" bgcolor="#f9feff">
@@ -84,6 +85,26 @@
 					}
 					else
 					echo date('d/m/Y');
+
+                            $finance_fees = FinanceFees::model()->findByAttributes(array('fee_collection_id' => $_REQUEST['collection'], 'student_id' => $_REQUEST['id']));
+        if($finance_fees != NULL)
+        {
+            if($settings!=NULL)
+                    {   
+                   
+            $latestdate = date( $settings->displaydate, strtotime($finance_fees->date));
+        }
+        else
+        {
+            $latestdate = date( 'd/m/Y', strtotime($finance_fees->date));   
+        }
+
+        }
+        else
+        {
+            $latestdate = "-";
+        }
+
 					?>
                 </td>
             </tr>
@@ -101,6 +122,7 @@
                 <td style=" padding:10px 0px;">
                 <?php echo Yii::t('fees','Address'); ?>:<?php echo $student->address_line1.' , '.$student->city.' , '.$student->state;?>
                 </td>
+                <td style="padding:5px 0px;"><?php echo Yii::t('fees','Last transaction'); ?>: <?php echo $latestdate; ?></td>
             </tr>
             <tr>
             	<td><?php echo Yii::t('fees','Fee Category'); ?>: <?php echo $category->name; ?></td>

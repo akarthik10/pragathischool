@@ -69,6 +69,7 @@ class FinanceFeesController extends RController
 		if(isset($_POST['FinanceFees']))
 		{
 			$model->attributes=$_POST['FinanceFees'];
+			//$model->saveAttributes('date' => date('Y-m-d') );
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -93,6 +94,7 @@ class FinanceFeesController extends RController
 		if(isset($_POST['FinanceFees']))
 		{
 			$model->attributes=$_POST['FinanceFees'];
+			//$model->saveAttributes('date' => date('Y-m-d') );
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -177,6 +179,7 @@ class FinanceFeesController extends RController
 		$list  = FinanceFees::model()->findByAttributes(array('id'=>$_GET['val1']));
 		$list->fees_paid = $_GET['fees'];
 		$list->is_paid = 1;
+		$list->date = date('Y-m-d');
 		$list->save();
 		echo 'Paid';
 		exit;
@@ -187,6 +190,8 @@ class FinanceFeesController extends RController
 		if(isset($_POST['FinanceFees']) and isset($_POST['FinanceFees']['fees_paid'])) 
         {
 			$model = $this->loadModel($_POST['FinanceFees']['id']);
+			$dt = date('Y-m-d');
+			$model->saveAttributes(array('date'=> $dt));	
 			$student = Students::model()->findByAttributes(array('id'=>$_POST['FinanceFees']['student_id']));
 			$collection = FinanceFeeCollections::model()->findByAttributes(array('id'=>$_POST['FinanceFees']['fee_collection_id']));
 			$check_admission_no = FinanceFeeParticulars::model()->findAllByAttributes(array('finance_fee_category_id'=>$collection->fee_category_id,'admission_no'=>$student->admission_no));
@@ -267,6 +272,8 @@ class FinanceFeesController extends RController
 		if(isset($_POST['FinanceFees']) and isset($_POST['FinanceFees']['fees_paid'])) 
         {
 			$model = $this->loadModel($_POST['FinanceFees']['id']);
+			$dt = date('Y-m-d');
+			$model->saveAttributes(array('date'=> $dt));
 			$student = Students::model()->findByAttributes(array('id'=>$_POST['FinanceFees']['student_id']));
 			$collection = FinanceFeeCollections::model()->findByAttributes(array('id'=>$_POST['FinanceFees']['fee_collection_id']));
 			$check_admission_no = FinanceFeeParticulars::model()->findAllByAttributes(array('finance_fee_category_id'=>$collection->fee_category_id,'admission_no'=>$student->admission_no));
