@@ -190,6 +190,16 @@ public function   init() {
 			$model->attributes=$_POST['FinanceFeeParticulars'];
 			$model->amount=str_replace(",","",$model->amount);
 			if( $model->save(false)){
+				$finance_fee_collections = FinanceFeeCollections::model()->findAll(array('condition'=>'fee_category_id = :id','params'=>array(':id'=>$model->finance_fee_category_id)));
+			            		foreach ($finance_fee_collections as $finance_fee_collection) {
+			            			$finance_fees = FinanceFees::model()->findAll(array('condition'=>'fee_collection_id = :id','params'=>array(':id'=>$finance_fee_collection->id))) ;
+			            			foreach($finance_fees as $finance_fee)
+			            			{
+			            				$finance_fee->is_paid = 0;
+			            				$finance_fee->save(false);
+			            			}
+			            		}
+			            		
                          echo json_encode(array('success'=>true));
 		             }else
                      echo json_encode(array('success'=>false));
@@ -208,6 +218,15 @@ public function   init() {
 						$model->amount=str_replace(",","",$model->amount);
                        //return the JSON result to provide feedback.
 			            if($model->save(false)){
+			            		$finance_fee_collections = FinanceFeeCollections::model()->findAll(array('condition'=>'fee_category_id = :id','params'=>array(':id'=>$model->finance_fee_category_id)));
+			            		foreach ($finance_fee_collections as $finance_fee_collection) {
+			            			$finance_fees = FinanceFees::model()->findAll(array('condition'=>'fee_collection_id = :id','params'=>array(':id'=>$finance_fee_collection->id))) ;
+			            			foreach($finance_fees as $finance_fee)
+			            			{
+			            				$finance_fee->is_paid = 0;
+			            				$finance_fee->save(false);
+			            			}
+			            		}
                                 echo json_encode(array('success'=>true,'id'=>$model->primaryKey) );
                                 exit;
                         } else
