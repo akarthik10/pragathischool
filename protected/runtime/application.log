@@ -4254,3 +4254,143 @@ Stack trace:
 #5 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
 #6 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
 #7 {main} REQUEST_URI=/pragathischool/index.php?r=transport
+2015/02/21 14:19:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "transaction".' in C:\wamp\www\pragathischool\core\web\CController.php:477
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\web\CController.php(262): CController->missingAction('transaction')
+#1 C:\wamp\www\pragathischool\core\web\CWebApplication.php(277): CController->run('transaction')
+#2 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('fees/financeFee...')
+#3 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#4 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#5 {main} REQUEST_URI=/pragathischool/index.php?r=fees/financeFees/transaction
+2015/02/21 14:31:38 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'batch_id' in 'where clause'. The SQL statement executed was: SELECT * FROM `finance_transactions` `t` WHERE batch_id=:x. Bound with :x='11'.
+2015/02/21 14:31:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'batch_id' in 'where clause'' in C:\wamp\www\pragathischool\core\db\CDbCommand.php:516
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\db\CDbCommand.php(374): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\www\pragathischool\core\db\ar\CActiveRecord.php(1308): CDbCommand->queryAll()
+#2 C:\wamp\www\pragathischool\core\db\ar\CActiveRecord.php(1428): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\wamp\www\pragathischool\protected\modules\fees\views\financeFees\transaction.php(56): CActiveRecord->findAll('batch_id=:x', Array)
+#4 C:\wamp\www\pragathischool\core\web\CBaseController.php(119): require('C:\wamp\www\pra...')
+#5 C:\wamp\www\pragathischool\core\web\CBaseController.php(88): CBaseController->renderInternal('C:\wamp\www\pra...', NULL, true)
+#6 C:\wamp\www\pragathischool\core\web\CController.php(866): CBaseController->renderFile('C:\wamp\www\pra...', NULL, true)
+#7 C:\wamp\www\pragathischool\core\web\CController.php(779): CController->renderPartial('transaction', NULL, true)
+#8 C:\wamp\www\pragathischool\protected\modules\fees\controllers\FinanceFeesController.php(585): CController->render('transaction')
+#9 C:\wamp\www\pragathischool\core\web\actions\CInlineAction.php(50): FinanceFeesController->actionTransaction()
+#10 C:\wamp\www\pragathischool\core\web\CController.php(300): CInlineAction->runWithParams(Array)
+#11 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#12 C:\wamp\www\pragathischool\core\web\filters\CFilter.php(41): CFilterChain->run()
+#13 C:\wamp\www\pragathischool\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#14 C:\wamp\www\pragathischool\core\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#15 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\wamp\www\pragathischool\core\web\CController.php(283): CFilterChain->run()
+#17 C:\wamp\www\pragathischool\core\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\wamp\www\pragathischool\core\web\CWebApplication.php(277): CController->run('transaction')
+#19 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('fees/financeFee...')
+#20 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#21 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#22 {main} REQUEST_URI=/pragathischool/index.php?r=fees/financeFees/transaction&collection=11
+2015/02/21 15:08:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined. The SQL statement executed was: SELECT * FROM `finance_transactions` `t` WHERE collection_id=:11 and student_id=:6. Bound with :x='11', :y='8'.
+2015/02/21 15:08:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined' in C:\wamp\www\pragathischool\core\db\CDbCommand.php:516
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\db\CDbCommand.php(374): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\www\pragathischool\core\db\ar\CActiveRecord.php(1308): CDbCommand->queryAll()
+#2 C:\wamp\www\pragathischool\core\db\ar\CActiveRecord.php(1428): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\wamp\www\pragathischool\protected\modules\fees\views\financeFees\transaction.php(86): CActiveRecord->findAll('collection_id=:...', Array)
+#4 C:\wamp\www\pragathischool\core\web\CBaseController.php(119): require('C:\wamp\www\pra...')
+#5 C:\wamp\www\pragathischool\core\web\CBaseController.php(88): CBaseController->renderInternal('C:\wamp\www\pra...', NULL, true)
+#6 C:\wamp\www\pragathischool\core\web\CController.php(866): CBaseController->renderFile('C:\wamp\www\pra...', NULL, true)
+#7 C:\wamp\www\pragathischool\core\web\CController.php(779): CController->renderPartial('transaction', NULL, true)
+#8 C:\wamp\www\pragathischool\protected\modules\fees\controllers\FinanceFeesController.php(585): CController->render('transaction')
+#9 C:\wamp\www\pragathischool\core\web\actions\CInlineAction.php(50): FinanceFeesController->actionTransaction()
+#10 C:\wamp\www\pragathischool\core\web\CController.php(300): CInlineAction->runWithParams(Array)
+#11 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#12 C:\wamp\www\pragathischool\core\web\filters\CFilter.php(41): CFilterChain->run()
+#13 C:\wamp\www\pragathischool\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#14 C:\wamp\www\pragathischool\core\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#15 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\wamp\www\pragathischool\core\web\CController.php(283): CFilterChain->run()
+#17 C:\wamp\www\pragathischool\core\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\wamp\www\pragathischool\core\web\CWebApplication.php(277): CController->run('transaction')
+#19 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('fees/financeFee...')
+#20 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#21 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#22 {main} REQUEST_URI=/pragathischool/index.php?r=fees/financeFees/transaction&collection=11&student=8
+2015/02/21 15:10:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "transaction?collection=11".' in C:\wamp\www\pragathischool\core\web\CController.php:477
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\web\CController.php(262): CController->missingAction('transaction?col...')
+#1 C:\wamp\www\pragathischool\core\web\CWebApplication.php(277): CController->run('transaction?col...')
+#2 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('fees/financeFee...')
+#3 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#4 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#5 {main} REQUEST_URI=/pragathischool/index.php?r=fees/financeFees/transaction?collection=11&student=6
+2015/02/21 15:10:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "transaction?collection=11".' in C:\wamp\www\pragathischool\core\web\CController.php:477
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\web\CController.php(262): CController->missingAction('transaction?col...')
+#1 C:\wamp\www\pragathischool\core\web\CWebApplication.php(277): CController->run('transaction?col...')
+#2 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('fees/financeFee...')
+#3 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#4 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#5 {main} REQUEST_URI=/pragathischool/index.php?r=fees/financeFees/transaction?collection=11&student=6
+2015/02/21 15:45:05 [error] [exception.HTML2PDF_exception] <span style="color: #AA0000; font-weight: bold;">ERREUR n°4</span><br>Fichier : C:\wamp\www\pragathischool\protected\vendors\html2pdf\_class\parsingHtml.class.php<br>Ligne : 119<br><br>Code HTML non valide, les balises ne sont pas fermées dans le bon ordre.<br>Etat : <pre>Array
+(
+    [0] => table
+    [1] => tr
+    [2] => td
+    [3] => div
+    [4] => table
+    [5] => tr
+    [6] => tr
+)
+</pre><br><br>HTML : ...&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;... REQUEST_URI=/pragathischool/index.php?r=fees/FinanceFees/Partialreceipt&batch=5&collection=11&id=6
+2015/02/21 15:45:24 [error] [exception.HTML2PDF_exception] <span style="color: #AA0000; font-weight: bold;">ERREUR n°4</span><br>Fichier : C:\wamp\www\pragathischool\protected\vendors\html2pdf\_class\parsingHtml.class.php<br>Ligne : 119<br><br>Code HTML non valide, les balises ne sont pas fermées dans le bon ordre.<br>Etat : <pre>Array
+(
+    [0] => table
+    [1] => tr
+    [2] => td
+    [3] => div
+    [4] => table
+    [5] => tr
+    [6] => tr
+)
+</pre><br><br>HTML : ...&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;... REQUEST_URI=/pragathischool/index.php?r=fees/FinanceFees/Partialreceipt&batch=5&collection=11&id=6
+2015/02/21 15:45:48 [error] [exception.HTML2PDF_exception] <span style="color: #AA0000; font-weight: bold;">ERREUR n°4</span><br>Fichier : C:\wamp\www\pragathischool\protected\vendors\html2pdf\_class\parsingHtml.class.php<br>Ligne : 119<br><br>Code HTML non valide, les balises ne sont pas fermées dans le bon ordre.<br>Etat : <pre>Array
+(
+    [0] => table
+    [1] => tr
+    [2] => td
+    [3] => div
+    [4] => table
+    [5] => tr
+    [6] => tr
+)
+</pre><br><br>HTML : ...&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;... REQUEST_URI=/pragathischool/index.php?r=fees/FinanceFees/Partialreceipt&batch=5&collection=11&id=6
+2015/02/21 15:45:54 [error] [exception.HTML2PDF_exception] <span style="color: #AA0000; font-weight: bold;">ERREUR n°4</span><br>Fichier : C:\wamp\www\pragathischool\protected\vendors\html2pdf\_class\parsingHtml.class.php<br>Ligne : 119<br><br>Code HTML non valide, les balises ne sont pas fermées dans le bon ordre.<br>Etat : <pre>Array
+(
+    [0] => table
+    [1] => tr
+    [2] => td
+    [3] => div
+    [4] => table
+    [5] => tr
+    [6] => tr
+)
+</pre><br><br>HTML : ...&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;... REQUEST_URI=/pragathischool/index.php?r=fees/FinanceFees/Partialreceipt&batch=5&collection=11&id=6

@@ -33,6 +33,8 @@
 						array('label'=>''.Yii::t('fees','Fee Categories').'<span>'.Yii::t('fees','Create and Manage Fee Categories').'</span>', 'url'=>array('/fees/financeFeeCategories') ,'linkOptions'=>array('class'=>'feca_ico'),
                                    'active'=> (Yii::app()->controller->id=='financeFeeCategories'  or Yii::app()->controller->id=='financeFeeParticulars')
 					    ),      
+
+					    array('label'=>Yii::t('fees','Transaction').' <span>'.Yii::t('fees','Transaction details').'</span>', 'url'=>array('/fees/financeFees/transaction'),'linkOptions'=>array('class'=>'fc_ico'),'active'=> ((Yii::app()->controller->id=='financeFees' and Yii::app()->controller->action->id=='transaction')))
 						/*array('label'=>''.Yii::t('fees','Cash Register').'<span>'.Yii::t('fees','Create and Manage Fee').'</span>', 'url'=>array('/fees/financeFees/cashregister') ,'linkOptions'=>array('class'=>'feca_ico'),
                                    'active'=> (Yii::app()->controller->action->id=='cashregister')
 					    ),     */                       

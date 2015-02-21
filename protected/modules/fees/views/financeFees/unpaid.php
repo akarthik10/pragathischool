@@ -284,6 +284,7 @@ if(count($particular)!=0)
             else
             {
                 echo '-';
+                $balance = '-';
             }
             ?>
          </td>
@@ -302,6 +303,16 @@ if(count($particular)!=0)
 			{
 				echo CHtml::ajaxLink(Yii::t('fees','Partial'), Yii::app()->createUrl('fees/FinanceFees/Partialfees' ), array('type' =>'GET','data' =>array( 'id' => $list_1->id ),'dataType' => 'text',  'update' =>'#partial'.$list_1->id, 'onclick'=>'$("#partialfees'.$list_1->id.'").dialog("open"); return false;',));
 				echo '<div  id="partial'.$list_1->id.'"></div>';
+                $finance_fees = FinanceTransaction::model()->findAll("collection_id=:x and student_id=:y", array(':x'=>$_REQUEST['course'],':y'=>$posts->admission_no));
+                $latest_transaction = 0;
+                foreach($finance_fees as $ffr)
+                {
+                    if($ffr->id > $latest_transaction )
+                    {
+                        $latest_transaction = $ffr->id;
+                    }
+                }
+                echo CHtml::link('Partial receipt', array('FinanceFees/Partialreceipt&batch='.$_REQUEST['batch'].'&collection='. $_REQUEST['course'].'&id='.$posts->admission_no.'&balance='. $balance.'&latest_transaction='. $latest_transaction));
 			}
 		 }
 		 else

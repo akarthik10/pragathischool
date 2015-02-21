@@ -1512,7 +1512,7 @@ CREATE TABLE `finance_transactions` (
   `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `amount` decimal(15,2) DEFAULT NULL,
   `fine_included` tinyint(1) DEFAULT '0',
-  `category_id` int(11) DEFAULT NULL,
+  `collection_id` int(11) DEFAULT NULL,
   `student_id` int(11) DEFAULT NULL,
   `finance_fees_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,

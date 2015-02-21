@@ -36,7 +36,7 @@ class FinanceTransaction extends CActiveRecord
 			//array('name','CRegularExpressionValidator', 'pattern'=>'/^[A-Za-z_ ]+$/','message'=>"{attribute} should contain only letters."),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, start_date, end_date, due_date, fee_category_id, batch_id, is_deleted', 'safe', 'on'=>'search'),
+			array('id, collection_id, student_id', 'safe', 'on'=>'search'),
 		);
 	}
 

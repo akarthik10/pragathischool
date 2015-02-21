@@ -27,7 +27,7 @@ class FinanceFeesController extends RController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','Payfees','unpaid','unpaidpdf','printreceipt','cashregister','partialfees'),
+				'actions'=>array('index','view','Payfees','unpaid','unpaidpdf','printreceipt','cashregister','partialfees', 'transaction'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -168,6 +168,20 @@ class FinanceFeesController extends RController
         $html2pdf->Output($student);
 		//$this->render('printreceipt');
 	}
+
+
+		public function actionPartialreceipt()
+	{
+		$student = Students::model()->findByAttributes(array('id'=>$_REQUEST['id']));
+		$student = $student->first_name.' '.$student->last_name.' Fees Receipt.pdf';
+		
+				  
+        $html2pdf = Yii::app()->ePdf->HTML2PDF();
+
+        $html2pdf->WriteHTML($this->renderPartial('partialreceipt', array('id'=>$_REQUEST['id'],'batch'=>$_REQUEST['batch'],'collection'=>$_REQUEST['course'],'id'=>$posts->id,'receipt_no'=>$receipt_no), true));
+        $html2pdf->Output($student);
+		//$this->render('printreceipt');
+	}
 	
 	public function actionPaid()
 	{
@@ -177,11 +191,22 @@ class FinanceFeesController extends RController
 	public function actionPayfees()
 	{
 		$list  = FinanceFees::model()->findByAttributes(array('id'=>$_GET['val1']));
+		$fees_initial = $list->fees_paid;
 		$list->fees_paid = $_GET['fees'];
 		$list->is_paid = 1;
 		$list->date = date('Y-m-d');
 		$list->save();
 		echo 'Paid';
+
+
+		$transaction  = new FinanceTransaction;
+				$transaction->amount = $_GET['fees'] - $fees_initial;
+				$transaction->collection_id = $list->fee_collection_id;
+				$transaction->student_id = $list->student_id;
+				$transaction->transaction_date = date('Y-m-d');
+				$transaction->save();
+
+
 		exit;
 		
 	}
@@ -578,4 +603,10 @@ $data = FinanceFeeParticulars::model()->findAll("finance_fee_category_id=:x", ar
 		} // End check whether SMS is enabled
 		$this->redirect(array('unpaid','batch'=>$_REQUEST['batch_id'],'course'=>$_REQUEST['collection']));
 	} // End send SMS function
+
+
+	function actionTransaction()
+	{
+		$this->render('transaction');
+	}
 }
