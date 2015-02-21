@@ -240,6 +240,7 @@ public function   init() {
 			$fee_collections = FinanceFeeCollections::model()->findAllByAttributes(array('fee_category_id'=>$id));
 			foreach ($fee_collections as $fee_collection){
 				FinanceFees::model()->DeleteAllByAttributes(array('fee_collection_id'=>$fee_collection->id));
+				FinanceTransaction::model()->deleteAll('collection_id=:x' , array(':x' => $fee_collection->id));
 			}
 			FinanceFeeCollections::model()->DeleteAllByAttributes(array('fee_category_id'=>$id));
 			echo json_encode (array('success'=>true));

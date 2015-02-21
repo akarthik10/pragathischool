@@ -305,6 +305,7 @@ public function   init() {
 		$deleted=$this->loadModel($id);
 		if ($deleted->delete()){
 			FinanceFees::model()->deleteAll('fee_collection_id=:x' , array(':x' => $id));
+			FinanceTransaction::model()->deleteAll('collection_id=:x' , array(':x' => $id));
 			echo json_encode (array('success'=>true));
 			exit;
 		}else{

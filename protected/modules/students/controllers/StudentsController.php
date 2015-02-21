@@ -827,6 +827,7 @@ class StudentsController extends RController
 			}
 		}
 		$examscores = ExamScores::model()->DeleteAllByAttributes(array('student_id'=>$_REQUEST['sid']));
+		$transactions = FinanceTransaction::model()->deleteAll('collection_id=:x' , array(':x' => $_REQUEST['sid']));
 		$this->redirect(array('/courses/batches/batchstudents','id'=>$_REQUEST['id']));
 	}
 	

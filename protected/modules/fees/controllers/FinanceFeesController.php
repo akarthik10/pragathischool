@@ -243,6 +243,12 @@ class FinanceFeesController extends RController
 			if($model->saveAttributes(array('fees_paid'=>$fees_paid)))
 			//if($model->save())
 			{
+				$transaction  = new FinanceTransaction;
+				$transaction->amount = $_POST['FinanceFees']['fees_paid'];
+				$transaction->collection_id = $_POST['FinanceFees']['fee_collection_id'];
+				$transaction->student_id = $_POST['FinanceFees']['student_id'];
+				$transaction->transaction_date = date('Y-m-d');
+				$transaction->save();
 				if($fees == $fees_paid)
 				{
 					$model->saveAttributes(array('is_paid'=>1));	

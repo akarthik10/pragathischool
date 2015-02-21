@@ -262,7 +262,8 @@ class CoursesController extends RController
 						
 						// Finance Fees Deletion
 						$student_fees = FinanceFees::model()->DeleteAllByAttributes(array('fee_collection_id'=>$collection->id)); 
-								
+						$transaction = FinanceTransaction::model()->DeleteAllByAttributes(array('collection_id'=>$collection->id));	
+						
 						$collection->delete(); // Fee Collection Deleted
 						
 					}
