@@ -42,7 +42,7 @@ class StudentPreviousDatas extends CActiveRecord
 			array('institution, year, course, total_mark', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, student_id, institution, year, course, total_mark', 'safe', 'on'=>'search'),
+			array('id, student_id, institution, year, course, total_mark, medium', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,6 +69,7 @@ class StudentPreviousDatas extends CActiveRecord
 			'year' => 'Year',
 			'course' => 'Course',
 			'total_mark' => 'Total Mark',
+			`medium` => 'Medium'
 		);
 	}
 
@@ -89,6 +90,7 @@ class StudentPreviousDatas extends CActiveRecord
 		$criteria->compare('year',$this->year,true);
 		$criteria->compare('course',$this->course,true);
 		$criteria->compare('total_mark',$this->total_mark,true);
+		$criteria->compare('medium',$this->medium,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

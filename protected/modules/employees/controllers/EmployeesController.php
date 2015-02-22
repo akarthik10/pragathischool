@@ -231,10 +231,10 @@ class EmployeesController extends RController
 								if($to!=''){ //If phone number is provided, send SMS
 									$college=Configurations::model()->findByPk(1);
 									$from = $college->config_value;
-									$message = 'Welcome to '.$college->config_value;
+									$message = 'Welcome to '.$college->config_value. '. You have been added to school database.';
 									$login_message = 'Log on to '.$college->config_value.' account with your email as username and '.$password.' as password.';
 									SmsSettings::model()->sendSms($to,$from,$message);
-									SmsSettings::model()->sendSms($to,$from,$login_message);
+									// SmsSettings::model()->sendSms($to,$from,$login_message);
 								} // End send SMS
 							} // Check if SMS is provided
 							

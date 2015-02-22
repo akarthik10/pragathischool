@@ -1,3 +1,31 @@
+<?php
+$this->breadcrumbs=array(
+	'Report'=>array('/report'),
+	'SMS Assessment Report',
+);
+?>
+
+
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'student-form',
+	'enableAjaxValidation'=>false,
+)); ?>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="247" valign="top">
+    <?php $this->renderPartial('left_side');?>
+ </td>
+    <td valign="top"> 
+    <div class="cont_right">
+    <h1><?php echo Yii::t('report','Assessment Report');?></h1>
+	<div class="formCon">
+     <div class="formConInner">
+                              
+       </div>
+
+
 
 
 <?php
@@ -70,6 +98,7 @@ if(isset($_REQUEST['examid']))
 			{
 			
             $to = "";
+            $grd = 0;
                 if($student->phone1)
                 {
                     $to = $student->phone1;
@@ -79,25 +108,104 @@ if(isset($_REQUEST['examid']))
                 }
                 $message = "";
                 	
-                    	$message .= "(". $student->admission_no .")" ; 
+                    	$message .= "Adm. no. ". $student->admission_no .": " ; 
                     
                 	   $message .= ucfirst($student->first_name).'  '.ucfirst($student->middle_name).'  '.ucfirst($student->last_name) . "\r\n";
 						echo ucfirst($student->first_name).'  '.ucfirst($student->middle_name).'  '.ucfirst($student->last_name); ?>
 					
                     <?php
-					
+					$total = 0;
+						$result = "PASS";
                     foreach($exams as $exam) // Creating subject column(s)
 					{
+						
 					$score = ExamScores::model()->findByAttributes(array('student_id'=>$student->id,'exam_id'=>$exam->id));
 					$subject=Subjects::model()->findByAttributes(array('id'=>$exam->subject_id));
+					$examgroup = ExamGroups::model()->findByAttributes(array('id'=>$exam->exam_group_id));
 					if($score->marks!=NULL or $score->remarks!=NULL)
 					{
 					
-									if($score->marks!=NULL)
-                                    {
-                                        // echo $score->marks;
-                                        $message .= $subject->name.' :'. $score->marks . "\r\n";
-                                    }
+
+					
+										 $grades = GradingLevels::model()->findAllByAttributes(array('batch_id'=>$_REQUEST['id']));
+			                                             $t = count($grades);
+
+														 if($examgroup->exam_type == 'Marks') 
+														 {  
+														 	if($score->marks!=NULL)
+                                    						{
+                                    						    // echo $score->marks;
+                                    						    $message .= $subject->name.' :'. $score->marks . "\r\n";
+                                    						    $total += $score->marks;
+                                    						    if($score->is_failed == 1){ $result = 'FAIL'; }
+                                    						}
+														} 
+														  else if($examgroup->exam_type == 'Grades') {
+														  	$grd = 1;
+														   foreach($grades as $grade)
+																{
+																	
+																 if($grade->min_score <= $score->marks)
+																	{	
+																		$grade_value =  $grade->name;
+																	}
+																	else
+																	{
+																		$t--;
+																		
+																		continue;
+																		
+																	}
+																$message .= $subject->name.' :'. $grade_value . "\r\n";
+																break;
+																
+																}
+																if($t<=0) 
+																	{
+																		$glevel = " No Grades" ;
+																	} 
+																
+																} 
+														   else if($examgroup->exam_type == 'Marks And Grades'){
+														   	$grd = 1;
+															 foreach($grades as $grade)
+																{
+																	
+																 if($grade->min_score <= $score->marks)
+																	{	
+																		$grade_value =  $grade->name;
+																	}
+																	else
+																	{
+																		$t--;
+																		
+																		continue;
+																		
+																	}
+
+																break;
+																
+																	
+																} 
+
+
+																if($t<=0) 
+																	{
+																		// echo $score->marks." & No Grades" ;
+																	}
+
+																	$message .= $subject->name.' :'. $grade_value . "\r\n";
+																$total = '-';
+																	if($grade_value == 'F')
+																	{
+																		$result = 'FAIL';
+																	}
+																 } 
+
+
+										
+
+								
 									
 									
 									// if($score->remarks!=NULL)
@@ -111,6 +219,26 @@ if(isset($_REQUEST['examid']))
 					}
                     if($to != "")
                     {
+
+                    		if($grd == 1)
+						{
+							if($total <600)
+							{
+								$grde = 'A';
+							}
+							 if($total<550)
+							{
+								$grde = 'B';
+							}
+							if($total<450)
+							{
+								$grde = 'C';
+							}
+							$total = $grde;
+						}
+
+
+                    	$message .= "\r\n Total: ". $total."\r\nResult: ". $result ;
                         SmsSettings::model()->sendSms($to,$from,$message);
                     }
 					
@@ -123,3 +251,23 @@ else
 }
 ?>
 </div>
+       </div>
+     <br />
+  
+   
+     <br />
+     
+    <!-- Batch Assessment Report -->
+    <div class="tablebx" style="overflow-x:auto;">
+    
+    </div>
+    <!-- End Batch Assessment Report -->
+    <br />
+  
+   
+<div class="clear"></div>
+    </div>
+</td>
+</tr>
+</table>
+<?php $this->endWidget(); ?>

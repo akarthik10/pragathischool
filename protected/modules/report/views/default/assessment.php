@@ -107,8 +107,10 @@ $this->breadcrumbs=array(
 				?>
                 	<td style="width:auto; min-width:80px; text-align:center;"><?php if(count($list)>7){ echo @$subject->code; } else { echo @$subject->name; }?></td>
                 <?php
-				}
-				?>
+				} ?>
+				<td style="width:auto;min-width:100px;"><?php echo Yii::t('students','Total');?></td>
+				<td style="width:auto;min-width:100px;"><?php echo Yii::t('students','Result');?></td>
+				
             </tr>
             <!-- End Table Headers -->
             <?php
@@ -118,7 +120,10 @@ $this->breadcrumbs=array(
 			{
 				foreach($students as $student) // Creating row corresponding to each student.
 				{
-				?>
+					$total = 0;
+					$result = "PASS";
+					$grd = 0;
+				?> 
 					<tr class=<?php echo $cls;?>>
 						<td>
 							<?php echo $student->admission_no; ?>
@@ -137,16 +142,20 @@ $this->breadcrumbs=array(
 						<?php
 						if($score->marks!=NULL or $score->remarks!=NULL)
 						{
+							$total += $score->marks;
 						?>
 							<!-- Mark and Remarks Column -->
 							<table align="center" width="100%" style="border:none;width:auto; min-width:80px;">
 								<tr>
 									<td style="border:none;<?php if($score->is_failed == 1){?>color:#F00;<?php }?>">
 										<?php 
-										 $grades = GradingLevels::model()->findAllByAttributes(array('batch_id'=>$score->grading_level_id));
+										 $grades = GradingLevels::model()->findAllByAttributes(array('batch_id'=>$batch_id));
 			                                             $t = count($grades);
+
 														 if($examgroup->exam_type == 'Marks') {  
-														 echo $score->marks; } 
+														 echo $score->marks;  
+														 if($score->is_failed == 1){ $result = 'FAIL';}
+														 } 
 														  else if($examgroup->exam_type == 'Grades') {
 														  	
 														   foreach($grades as $grade)
@@ -163,6 +172,7 @@ $this->breadcrumbs=array(
 																		continue;
 																		
 																	}
+																	$grd = 1;
 																echo $grade_value ;
 																break;
 																
@@ -171,6 +181,8 @@ $this->breadcrumbs=array(
 																	{
 																		$glevel = " No Grades" ;
 																	} 
+
+																	if($grade_value == 'F') {$result = 'FAIL'; }
 																
 																} 
 														   else if($examgroup->exam_type == 'Marks And Grades'){
@@ -188,6 +200,7 @@ $this->breadcrumbs=array(
 																		continue;
 																		
 																	}
+																	$grd = 1;
 																echo $score->marks . " & ".$grade_value ;
 																break;
 																
@@ -198,11 +211,14 @@ $this->breadcrumbs=array(
 																		echo $score->marks." & No Grades" ;
 																	}
 																 } 
+																 if($grade_value == 'F') {$result = 'FAIL'; }
 										?>
 									</td>
+
+
 								</tr>
 								<tr>
-									<td style="border:none;<?php if($score->is_failed == 1){?>color:#F00;<?php }?>">
+									<td style="border:none;<?php if($score->is_failed == 1){  ?>color:#F00;<?php }?>">
 										<?php 
 										if($score->remarks!=NULL)
 											echo $score->remarks;
@@ -210,6 +226,7 @@ $this->breadcrumbs=array(
 											echo '-';
 										?>
 									</td>
+
 								</tr>
 							</table>
 							<!-- End Mark and Remarks Column -->
@@ -223,7 +240,35 @@ $this->breadcrumbs=array(
 						</td>
 						<?php
 						}
+
+						if($grd == 1)
+						{
+							if($total <600)
+							{
+								$grde = 'A';
+							}
+							 if($total<550)
+							{
+								$grde = 'B';
+							}
+							if($total<450)
+							{
+								$grde = 'C';
+							}
+						}
+
+
+
 						?>
+						<td>
+										<?php
+										 echo $total; 
+										if($grd==1){ echo '('.$grde.')'; } 
+										?>
+									</td>
+									<td>
+										<?php echo $result; ?>
+									</td>
 					</tr>
 				<?php 
 				} // END Creating row corresponding to each student.

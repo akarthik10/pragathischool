@@ -56,6 +56,7 @@
   	 <td><?php echo $form->labelEx($model,Yii::t('students','course')); ?></td>
      <td>&nbsp;</td>
     <td><?php echo $form->labelEx($model,Yii::t('students','total_mark')); ?></td>
+    <td><?php echo $form->labelEx($model,Yii::t('students','medium')); ?></td>
    
   </tr>
   <tr>
@@ -65,6 +66,7 @@
     <td><?php echo $form->textField($model,'total_mark',array('size'=>25,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'total_mark'); ?></td>
   
+  <td><?php echo $form->textField($model,'medium',array('size'=>25,'maxlength'=>255)); ?>
     
   </tr>
  

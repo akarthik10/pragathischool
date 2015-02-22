@@ -2509,6 +2509,9 @@ DELIMITER ;
 -- Table structure for table `students_subjects`
 --
 
+ALTER TABLE `students` AUTO_INCREMENT = 1000;
+
+
 CREATE TABLE `students_subjects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `student_id` int(11) DEFAULT NULL,
@@ -2646,6 +2649,7 @@ CREATE TABLE `student_previous_datas` (
   `year` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `course` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `total_mark` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `medium` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

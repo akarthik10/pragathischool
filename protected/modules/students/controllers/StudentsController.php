@@ -194,9 +194,9 @@ class StudentsController extends RController
 							if($to!=''){ // Send SMS if phone number is provided
 								$college=Configurations::model()->findByPk(1);
 								$from = $college->config_value;
-								$message = 'Welcome to '.$college->config_value;
+								$message = 'Welcome to '.$college->config_value.'. You have been successfully admitted. Please note your admission no: '. $_POST['Students']['admission_no'];
 								$login_message = 'Log on to '.$college->config_value.' account with your email as username and '.$password.' as password.';
-								SmsSettings::model()->sendSms($to,$from,$message);
+								// SmsSettings::model()->sendSms($to,$from,$message);
 								SmsSettings::model()->sendSms($to,$from,$message);
 							} // End send SMS
 						} // End check if SMS is enabled
