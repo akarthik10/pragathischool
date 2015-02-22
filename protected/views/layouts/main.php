@@ -372,6 +372,7 @@ $(".navigationbtm_wrapper_outer").show();
 				}
 				?>
                  </li>
+                 <li>
                <?php /*?> <li><?php 
 				if(Yii::app()->controller->id=='beobject' || Yii::app()->controller->id=='besite' || Yii::app()->controller->id=='beterm' || Yii::app()->controller->id=='betaxonomy' || Yii::app()->controller->id=='bemenu' || Yii::app()->controller->id=='becontentlist' || Yii::app()->controller->id=='beblock' || Yii::app()->controller->id=='bepage' || Yii::app()->controller->id=='beresource' || Yii::app()->controller->id=='beuser')
 				{
@@ -386,15 +387,16 @@ $(".navigationbtm_wrapper_outer").show();
 
                 if(isset(Yii::app()->controller->module->id) and Yii::app()->controller->module->id=='sms')
 				 {
-					 echo '<li class="active">';
-				 	echo CHtml::link(Yii::t('app','SMS'), array('/sms'),array('class'=>''));
-					echo '</li>';
+					 // echo '<li class="active">';
+				 	echo CHtml::link(Yii::t('app','SMS'), array('/sms'),array('class'=>'active'));
+					// echo '</li>';
 				 }else{
-					 echo '<li>';
+					 // echo '<li>';
 					 echo CHtml::link(Yii::t('app','SMS'), array('/sms'),array('class'=>''));
-					 echo '</li>';
+					 // echo '</li>';
 				 }
 				 ?>
+				 </li>
             </ul>
             
         </div>	
