@@ -143,6 +143,12 @@ $this->breadcrumbs=array(
     <td class="listbx_subhdng"><?php echo Yii::t('students','Religion');?></td>
     <td class="subhdng_nrmal"><?php echo $model->religion; ?></td>
   </tr>
+  <tr>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Caste');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->caste; ?></td>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Medium of Instruction');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->medium_of_instruction; ?></td>
+  </tr>
   <tr class="listbxtop_hdng">
     <td><?php echo Yii::t('students','Emergeny Contact');?></td>
     <td>&nbsp;</td>

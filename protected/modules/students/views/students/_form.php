@@ -275,6 +275,28 @@ else
                         <?php echo $form->error($model,'student_category_id'); ?>
                     </td>
                 </tr>
+                                <tr>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','caste')); ?></td>
+                    <td>&nbsp;</td>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','medium_of_instruction')); ?></td>
+                    <td>&nbsp;</td>
+                    <td valign="bottom">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <?php echo $form->textField($model,'caste',array('size'=>15,'maxlength'=>255)); ?>
+                        <?php echo $form->error($model,'caste'); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td valign="top">
+                        <?php echo $form->textField($model,'medium_of_instruction',array('size'=>10,'maxlength'=>255)); ?>
+                        <?php echo $form->error($model,'medium_of_instruction'); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td valign="top">
+                        &nbsp;
+                    </td>
+                </tr>
             </table>
         </div>
     </div>

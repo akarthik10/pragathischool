@@ -155,9 +155,9 @@ class GuardiansController extends RController
 							$college=Configurations::model()->findByPk(1);
 							$from = $college->config_value;
 							$message = 'Welcome to '.$college->config_value;
-							$login_message = 'Log on to '.$college->config_value.' account with your email as username and '.$password.' as password.';
+							// $login_message = 'Log on to '.$college->config_value.' account with your email as username and '.$password.' as password.';
 							SmsSettings::model()->sendSms($to,$from,$message);
-							SmsSettings::model()->sendSms($to,$from,$login_message);
+							// SmsSettings::model()->sendSms($to,$from,$login_message);
 						} // End send SMS
 					} // End check if SMS is enabled
 					

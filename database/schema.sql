@@ -2488,6 +2488,8 @@ CREATE TABLE `students` (
   `has_paid_fees` tinyint(1) DEFAULT '0',
   `photo_file_size` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
+  `caste` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `medium_of_instruction` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_students_on_admission_no` (`admission_no`(10)),
   KEY `index_students_on_first_name_and_middle_name_and_last_name` (`first_name`(10),`middle_name`(10),`last_name`(10))
@@ -2952,3 +2954,104 @@ ALTER TABLE `profiles`
 --
 ALTER TABLE `rights`
   ADD CONSTRAINT `rights_ibfk_1` FOREIGN KEY (`itemname`) REFERENCES `authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+
+
+
+-- Custom tables
+
+-- phpMyAdmin SQL Dump
+-- version 3.2.4
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Feb 22, 2015 at 04:45 PM
+-- Server version: 5.1.41
+-- PHP Version: 5.3.1
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `testdb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `expense`
+--
+
+CREATE TABLE IF NOT EXISTS `expense` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(25) NOT NULL,
+  `description` text NOT NULL,
+  `amount` double NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `name` (`name`),
+  KEY `name_2` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `expense`
+--
+
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `expense`
+--
+ALTER TABLE `expense`
+  ADD CONSTRAINT `expense_ibfk_1` FOREIGN KEY (`name`) REFERENCES `expense_type` (`expense_category`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+-- phpMyAdmin SQL Dump
+-- version 3.2.4
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Feb 22, 2015 at 04:45 PM
+-- Server version: 5.1.41
+-- PHP Version: 5.3.1
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `testdb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `expense_type`
+--
+
+CREATE TABLE IF NOT EXISTS `expense_type` (
+  `expense_category` varchar(25) NOT NULL,
+  PRIMARY KEY (`expense_category`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

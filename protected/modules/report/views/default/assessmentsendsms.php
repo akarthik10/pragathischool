@@ -122,6 +122,7 @@ if(isset($_REQUEST['examid']))
 					$score = ExamScores::model()->findByAttributes(array('student_id'=>$student->id,'exam_id'=>$exam->id));
 					$subject=Subjects::model()->findByAttributes(array('id'=>$exam->subject_id));
 					$examgroup = ExamGroups::model()->findByAttributes(array('id'=>$exam->exam_group_id));
+					$examname = $examgroup->name; 
 					if($score->marks!=NULL or $score->remarks!=NULL)
 					{
 					
@@ -239,6 +240,7 @@ if(isset($_REQUEST['examid']))
 
 
                     	$message .= "\r\n Total: ". $total."\r\nResult: ". $result ;
+                    	$message = "$examname \r\n". $message;
                         SmsSettings::model()->sendSms($to,$from,$message);
                     }
 					

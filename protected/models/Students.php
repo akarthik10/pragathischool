@@ -80,7 +80,7 @@ class Students extends CActiveRecord
 			array('first_name', 'required',),
 			array('admission_no','unique'),
 			array('email','check'),
-			array('admission_no, class_roll_no, first_name, middle_name, last_name, gender, blood_group, birth_place, language, religion, address_line1, address_line2, city, state, email, photo_file_name, photo_content_type, status_description', 'length', 'max'=>255),
+			array('admission_no, class_roll_no, first_name, middle_name, last_name, gender, blood_group, birth_place, language, religion, address_line1, address_line2, city, state, email, photo_file_name, photo_content_type, status_description, medium_of_instruction, caste', 'length', 'max'=>255),
 			array('admission_date, date_of_birth, created_at, updated_at', 'safe'),			
 			array('email','email'),
 			/*array(
@@ -95,7 +95,7 @@ class Students extends CActiveRecord
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('photo_data', 'file', 'types'=>'jpg, gif, png', 'allowEmpty' => true),
-			array('id, admission_no, parent_id, class_roll_no, admission_date, first_name, middle_name, last_name, batch_id, date_of_birth, gender, blood_group, birth_place, nationality_id, language, religion, student_category_id, address_line1, address_line2, city, state, pin_code, country_id, phone1, phone2, email, immediate_contact_id, is_sms_enabled, photo_file_name, photo_content_type, photo_data, status_description, is_active, is_deleted, created_at, updated_at, has_paid_fees, photo_file_size, user_id', 'safe', 'on'=>'search'),
+			array('id, admission_no, parent_id, class_roll_no, admission_date, first_name, middle_name, last_name, batch_id, date_of_birth, gender, blood_group, birth_place, nationality_id, language, religion, student_category_id, address_line1, address_line2, city, state, pin_code, country_id, phone1, phone2, email, immediate_contact_id, is_sms_enabled, photo_file_name, photo_content_type, photo_data, status_description, is_active, is_deleted, created_at, updated_at, has_paid_fees, photo_file_size, user_id, medium_of_instruction, caste', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -167,6 +167,8 @@ class Students extends CActiveRecord
 			'has_paid_fees' => 'Has Paid Fees',
 			'photo_file_size' => 'Photo File Size',
 			'user_id' => 'User',
+			'medium_of_instruction' => 'Medium of Instruction',
+			'caste' => 'Caste',
 		);
 	}
 
@@ -219,6 +221,8 @@ class Students extends CActiveRecord
 		$criteria->compare('has_paid_fees',$this->has_paid_fees);
 		$criteria->compare('photo_file_size',$this->photo_file_size);
 		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('medium_of_instruction',$this->medium_of_instruction);
+		$criteria->compare('caste',$this->caste);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

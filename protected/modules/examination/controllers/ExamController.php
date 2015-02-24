@@ -312,7 +312,7 @@ public function   init() {
 								else{ // If exam name is changed.
 									$message = 'Notice: Exam name "'.$prev_name.'" changed to "'.$model->name.'"';
 									if(strcasecmp($prev_exam_date, $model->exam_date) != 0){ // if exam name is changed and date is also changed.
-										$message .= ' Also, the schedule is modified';
+										$message .= ' Also, the schedule is modified, new date: '. $model->exam_date;
 									}
 								}
 								
