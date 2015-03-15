@@ -1,6 +1,6 @@
 <?php
 
-class FeesModule extends CWebModule
+class FeesModules extends CWebModule
 {
 	public function init()
 	{

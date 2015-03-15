@@ -53,7 +53,7 @@ $this->breadcrumbs=array(
 	if($exam!=NULL){
 		$arr = array(array());
 		unset($arr[0]);
-
+		$totals = array();
 		foreach($exam as $exams)
 		{
 			
@@ -64,8 +64,9 @@ $this->breadcrumbs=array(
 			$exm_name = $group->name;
 			$sub=Subjects::model()->findByAttributes(array('id'=>$exm->subject_id));
 			$sub_name = $sub->name ;
+			$totals[$exm_name] += $exams->marks;
 			if($group->exam_type == 'Marks') {  
-				  $arr[$sub_name] [$exm_name] = $exams->marks; } 
+				  $arr[$sub_name] [$exm_name] = $exams->marks;  } 
 				  else if($group->exam_type == 'Grades') {
 				   
 				        
@@ -143,6 +144,17 @@ $this->breadcrumbs=array(
 			}
 			echo '</tr>';
 
+			
+		}
+
+		foreach ($arr as $sub => $subs) {
+			echo '<tr><th>Total:</th>';
+			foreach($subs as $exam_name => $valu)
+			{
+				echo '<th>'. $totals[$exam_name]. '</th>';
+			}
+			echo '</tr>';
+			break;
 			
 		}
 		
