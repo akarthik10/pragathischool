@@ -38,3 +38,4 @@ define('BASEURL', 'http://localhost/pragathischool');
 define('DB_CONNECTION','mysql:host=localhost;port=3306;dbname=os_h');
 define('DB_USER','root');
 define('DB_PWD','');
+define('FEES_ENABLED', false);

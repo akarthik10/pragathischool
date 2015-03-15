@@ -337,11 +337,11 @@ $(".navigationbtm_wrapper_outer").show();
                
                 <li>
                  <?php 
-				if(isset(Yii::app()->controller->module->id) and Yii::app()->controller->module->id=='fees')
+				if(isset(Yii::app()->controller->module->id) and Yii::app()->controller->module->id=='fees' && constant('FEES_ENABLED'))
 				{
 				    echo CHtml::link(Yii::t('app','Fees'), array('/fees'),array('class'=>'active'));
 				}
-				else
+				else if(constant('FEES_ENABLED'))
 				{
 					echo CHtml::link(Yii::t('app','Fees'), array('/fees'),array('class'=>''));
 				}
