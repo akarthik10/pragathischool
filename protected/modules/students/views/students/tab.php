@@ -47,11 +47,11 @@
         <li> 
 		
         <?php     
-	          if(Yii::app()->controller->action->id=='fees' && constant('FEE_MODULE'))
+	          if(Yii::app()->controller->action->id=='fees' && constant('FEES_ENABLED'))
 	          {
 		      echo CHtml::link(Yii::t('students','Fees'), array('fees', 'id'=>$_REQUEST['id']),array('class'=>'active'));
 			  }
-			  else if(constant('FEE_MODULE'))
+			  else if(constant('FEES_ENABLED'))
 			  {
 	          echo CHtml::link(Yii::t('students','Fees'), array('fees', 'id'=>$_REQUEST['id']));
 			  }
