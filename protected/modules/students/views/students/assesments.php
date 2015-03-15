@@ -42,29 +42,32 @@ $this->breadcrumbs=array(
 	?>
     <div class="tableinnerlist">
     <table width="100%" cellpadding="0" cellspacing="0">
-    <tr>
+<!--     <tr>
     <th><?php echo Yii::t('students','Exam Group Name');?></th>
     <th><?php echo Yii::t('students','Subject');?></th>
     <th><?php echo Yii::t('students','Score');?></th>
     <th><?php echo Yii::t('students','Result');?></th>
-    </tr>
+    </tr> -->
 
     <?php
 	if($exam!=NULL){
+		$arr = array(array());
+		unset($arr[0]);
+
 		foreach($exam as $exams)
 		{
-			echo '<tr>';
+			
 			$exm=Exams::model()->findByAttributes(array('id'=>$exams->exam_id));
 			$group=ExamGroups::model()->findByAttributes(array('id'=>$exm->exam_group_id));
 			$grades = GradingLevels::model()->findAllByAttributes(array('batch_id'=>$exams->grading_level_id));
 			$t = count($grades);
-			echo '<td>'.$group->name.'</td>';
+			$exm_name = $group->name;
 			$sub=Subjects::model()->findByAttributes(array('id'=>$exm->subject_id));
-			echo '<td>'.$sub->name.'</td>';
+			$sub_name = $sub->name ;
 			if($group->exam_type == 'Marks') {  
-				  echo "<td>".$exams->marks."</td>"; } 
+				  $arr[$sub_name] [$exm_name] = $exams->marks; } 
 				  else if($group->exam_type == 'Grades') {
-				   echo "<td>";
+				   
 				        
 				   foreach($grades as $grade)
 						{
@@ -80,7 +83,7 @@ $this->breadcrumbs=array(
 								continue;
 								
 							}
-						echo $grade_value ;
+						$arr[$sub_name] [$exm_name] =  $grade_value ;
 						break;
 						
 						}
@@ -88,10 +91,9 @@ $this->breadcrumbs=array(
 							{
 								$glevel = " No Grades" ;
 							} 
-						echo "</td>"; 
 						} 
 				   else if($group->exam_type == 'Marks And Grades'){
-					echo "<td>"; foreach($grades as $grade)
+					foreach($grades as $grade)
 						{
 							
 						 if($grade->min_score <= $exams->marks)
@@ -105,22 +107,45 @@ $this->breadcrumbs=array(
 								continue;
 								
 							}
-						echo $exams->marks . " & ".$grade_value ;
+						$arr[$sub_name] [$exm_name] =  $exams->marks . " & ".$grade_value ;
 						break;
 						
 							
 						} 
 						if($t<=0) 
 							{
-								echo $exams->marks." & No Grades" ;
+								$arr[$sub_name] [$exm_name] = $exams->marks." & No Grades" ;
 							}
-						echo "</td>"; } 
+						 } 
 			if($exams->is_failed==NULL)
-			echo '<td>Passed</td>';
+			$arr[$sub_name] [$exm_name] .= ' (PASS)';
 			else
-			echo '<td>Failed</td>';
-			echo '</tr>';
+			$arr[$sub_name] [$exm_name] .= ' (FAIL)';
 		}
+
+		foreach ($arr as $sub => $subs) {
+			echo '<tr><th>Exams:</th>';
+			foreach($subs as $exam_name => $valu)
+			{
+				echo '<th>'. $exam_name. '</th>';
+			}
+			echo '</tr>';
+			break;
+			
+		}
+		
+		foreach ($arr as $sub => $subs) {
+			echo '<tr>';
+			echo '<td>'. $sub. '</td>';
+			foreach($subs as $exam_name => $valu)
+			{
+				echo '<td>'. $valu. '</td>';
+			}
+			echo '</tr>';
+
+			
+		}
+		
 	}
 	else{
 		echo '<tr>';

@@ -4521,3 +4521,26 @@ Stack trace:
 #26 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
 #27 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
 #28 {main} REQUEST_URI=/pragathischool/index.php?r=students/students/create
+2015/03/15 11:39:27 [error] [exception.CException] exception 'CException' with message 'Property "ExamScores.min_marks" is not defined.' in C:\wamp\www\pragathischool\core\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\www\pragathischool\core\db\ar\CActiveRecord.php(129): CComponent->__get('min_marks')
+#1 C:\wamp\www\pragathischool\protected\modules\students\views\students\assesments.php(121): CActiveRecord->__get('min_marks')
+#2 C:\wamp\www\pragathischool\core\web\CBaseController.php(119): require('C:\wamp\www\pra...')
+#3 C:\wamp\www\pragathischool\core\web\CBaseController.php(88): CBaseController->renderInternal('C:\wamp\www\pra...', Array, true)
+#4 C:\wamp\www\pragathischool\core\web\CController.php(866): CBaseController->renderFile('C:\wamp\www\pra...', Array, true)
+#5 C:\wamp\www\pragathischool\core\web\CController.php(779): CController->renderPartial('assesments', Array, true)
+#6 C:\wamp\www\pragathischool\protected\modules\students\controllers\StudentsController.php(342): CController->render('assesments', Array)
+#7 C:\wamp\www\pragathischool\core\web\actions\CInlineAction.php(50): StudentsController->actionAssesments()
+#8 C:\wamp\www\pragathischool\core\web\CController.php(300): CInlineAction->runWithParams(Array)
+#9 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\www\pragathischool\core\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\wamp\www\pragathischool\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp\www\pragathischool\core\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 C:\wamp\www\pragathischool\core\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp\www\pragathischool\core\web\CController.php(283): CFilterChain->run()
+#15 C:\wamp\www\pragathischool\core\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp\www\pragathischool\core\web\CWebApplication.php(277): CController->run('assesments')
+#17 C:\wamp\www\pragathischool\core\web\CWebApplication.php(136): CWebApplication->runController('students/studen...')
+#18 C:\wamp\www\pragathischool\core\base\CApplication.php(158): CWebApplication->processRequest()
+#19 C:\wamp\www\pragathischool\index.php(51): CApplication->run()
+#20 {main} REQUEST_URI=/pragathischool/index.php?r=students/students/assesments&id=13
