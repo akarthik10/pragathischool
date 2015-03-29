@@ -208,9 +208,11 @@ public function   init() {
 					   $count = sizeof($list['batch_id']);
 						for($i=0;$i<$count;$i++)
 						{
+							$batch =Batches::model()->findByAttributes(array('id'=>$list['batch_id'][$i]));
+							$course = Courses::model()->findByAttributes(array('id'=> $batch->course_id));
 							$model=new FinanceFeeCategories;	
 							$model->name = $list['name'];
-							$model->description = $list['description'];
+							$model->description = $list['name'] . ' for '.$batch->name .'( '.$course->course_name.') '.$list['description'];
 							$model->batch_id = $list['batch_id'][$i];
 							$model->is_deleted = $list['is_deleted'];
 							$model->is_master = $list['is_master'];

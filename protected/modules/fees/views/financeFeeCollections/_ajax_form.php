@@ -81,7 +81,7 @@
 				foreach ($models as $model_1)
 				{
 					$posts=Batches::model()->findByPk($model_1->batch_id);
-					$data[$model_1->id] = @$model_1->name.'-'.@$posts->name;
+					$data[$model_1->id] = @$model_1->name.'-'.@$posts->name . '(' .@$model_1->description. ')';
 				}
 	?>
             
