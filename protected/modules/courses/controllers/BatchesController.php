@@ -158,8 +158,16 @@ class BatchesController extends RController
 				 {
 					 
 					 $Student=Students::model()->findByAttributes(array('id'=>$sid));
-					 
-					 $Student->saveAttributes(array('batch_id'=>$_POST['batch_id']));
+					 $new_model=new Students;
+					 // $new_model->setAttributes($Student->attributes, false);
+					 // $new_model->batch_id= $_POST['batch_id'];
+					 // $new_model->id= NULL;
+					 $new_model->attributes = $Student->attributes;
+					 $new_model->batch_id= $_POST['batch_id'];
+					 // $new_model->id=NULL;
+					 $new_model->save(false);
+					 // file_put_contents("s.txt", print_r($new_model, true));
+					 // print_r($model);
 					 
 				} 
 				 Yii::app()->user->setFlash('success', "Promoted All Selected Students To This Batch");
